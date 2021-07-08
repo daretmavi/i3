@@ -14,5 +14,7 @@ i3_no_trash_in_survival    (Trash is available only in creative)    bool true
 # For skin choice use tab instead of inventory drop-down list only
 i3_skinsdb_tab (Use tab for skins)    bool true
 
-#
+# If the filter has to be focused on inventory open
+# = false - You can close inventory with inventory key (default i) again
+# = true - After typing you star the search, even with inventory key
 i3_filter_focus (Focus on filter in inventory)    bool false
