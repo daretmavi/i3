@@ -27,6 +27,7 @@ local damage_enabled = core.settings:get_bool "enable_damage"
 -- new settings
 local creative_trash_only = core.settings:get_bool("i3_no_trash_in_survival", true)
 local use_skinsdb_tab = core.settings:get_bool("i3_skinsdb_tab", true)
+local use_filter_focus = core.settings:get_bool("i3_filter_focus", false)
 
 -- ************
 
@@ -1717,8 +1718,14 @@ local function get_items_fs(fs, data, full_height)
 	local ipp = rows * lines
 	local size = 0.85
 
+	if use_filter_focus then
+		fs("set_focus[filter]")
+	else
+		fs("set_focus[cancel;true]")
+	end
+	
 	fs(fmt("box[%f,0.2;4.05,0.6;#bababa25]", data.inv_width + 0.3),
-	   "set_focus[filter]",
+	--   "set_focus[filter]",
 	   fmt("field[%f,0.2;2.95,0.6;filter;;%s]", data.inv_width + 0.35, ESC(data.filter)),
 	   "field_close_on_enter[filter;false]")
 

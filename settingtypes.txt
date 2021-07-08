@@ -11,5 +11,8 @@ i3_item_compression    (Regroup items of the same type)    bool true
 # Show trash only in creative mode, or with creative privileges
 i3_no_trash_in_survival    (Trash is available only in creative)    bool true
 
-# For skin choice use tab instead of inventory dropdown only
+# For skin choice use tab instead of inventory drop-down list only
 i3_skinsdb_tab (Use tab for skins)    bool true
+
+#
+i3_filter_focus (Focus on filter in inventory)    bool false
