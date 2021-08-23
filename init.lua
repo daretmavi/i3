@@ -1713,7 +1713,7 @@ local function get_items_fs(fs, data, full_height)
 		data.items = new
 	end
 
-	local items = data.alt_items or data.items
+	local items = data.alt_items or data.items or {}
 	local rows, lines = 8, 12
 	local ipp = rows * lines
 	local size = 0.85
@@ -2438,6 +2438,14 @@ local function rcp_fields(player, data, fields)
 
 	elseif fields.craft_rcp or fields.craft_usg then
 		craft_stack(player, data, fields.craft_rcp)
+
+		if fields.craft_rcp then
+			data.export_rcp = nil
+			data.scrbar_rcp = 1
+		elseif fields.craft_usg then
+			data.export_usg = nil
+			data.scrbar_usg = 1
+		end
 	else
 		select_item(player, name, data, fields)
 	end
@@ -3075,7 +3083,7 @@ local function save_data(player_name)
 		if not META_SAVES[dat] then
 			_pdata[name][dat] = nil
 
-			if player_name then
+			if player_name and pdata[player_name] then
 				pdata[player_name][dat] = nil -- To free up some memory
 			end
 		end
